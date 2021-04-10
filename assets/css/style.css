@@ -7,8 +7,11 @@ body {
     flex-direction: column;
     margin: 0 auto;
     align-items: center;
-    background-color: aqua;
+    background-color: rgb(53, 53, 53);
 }
 
+h1 {
+    color: azure;
+}
 
 
