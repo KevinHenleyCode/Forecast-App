@@ -2,7 +2,7 @@ let theDate = moment().format("M/DD/YYYY");
 
 
 let userSubmit = $('button').on('click', function(){
-    let userCity = $('#city').val()
+    let userCity = $('#city').val().toUpperCase()
     cityApi(userCity)
 })
 
@@ -17,7 +17,7 @@ function cityApi(userCity) {
     .then(data => cityData = data)
     .then(() => passLatLon(cityData, userCity))
     .catch((error) => {
-        alert('Invalid city');
+        alert('Page Error');
         resetTextarea()
     })
 }
@@ -48,24 +48,34 @@ function weatherApi(userCity, lat, lon) {
 
 function printUV(weatherData, userCity) {
     console.log(weatherData);
-    let timestamp = weatherData.daily[1].dt
-    let futureDays = new Date(timestamp*1000)
-
-    $('.date').html(userCity + " (" + theDate + ") " + "<img src=http://openweathermap.org/img/wn/" + weatherData.current.weather[0].icon + ".png>")
-    $('.temp').html("Temperature: " + JSON.stringify(weatherData.current.temp) + " °F")
-    $('.humid').html("Humidity: " + JSON.stringify(weatherData.current.humidity) + "%")
-    $('.wind').html("Wind Speed: " + JSON.stringify(weatherData.current.wind_speed) + " MPH")
+    let dailyData = weatherData.daily[0]
+    let whichDay = new Date((dailyData.dt)*1000)
+    let theDate = `${whichDay.getUTCMonth()+1}/${whichDay.getUTCDate()}/${whichDay.getUTCFullYear()}`
+    
+    $('.date').html(userCity + ": (" + theDate + ")" + "<img src=http://openweathermap.org/img/wn/" + weatherData.current.weather[0].icon + ".png>")
+    $('.temp').html("Temperature: " + JSON.stringify(weatherData.daily[0].temp.day) + " °F")
+    $('.humid').html("Humidity: " + JSON.stringify(weatherData.daily[0].humidity) + "%")
+    $('.wind').html("Wind Speed: " + JSON.stringify(weatherData.daily[0].wind_speed) + " MPH")
     $('.uv').html("UVI : " + JSON.stringify(weatherData.daily[0].uvi))
+    
+    // for small cards
+    for (let i = 1; i < 6; i++) {
+        let dailyData = weatherData.daily[i]
+        let whichDay = new Date((dailyData.dt)*1000)
+        let theDate = `${whichDay.getUTCMonth()+1}/${whichDay.getUTCDate()}/${whichDay.getUTCFullYear()}`
+    $('.small-cards').append('<div class="col-2 card">'+
+                            '<div div class= "card-header">'+ theDate +'</div>'+
+                            '<ul class="list-group list-group-flush">'+
+                            '<li class="list-group-item"><img src=http://openweathermap.org/img/wn/'+ weatherData.daily[i].weather[0].icon+'.png></li>'+
+                            '<li class="list-group-item tempFuture1">Temp: ' + JSON.stringify(weatherData.daily[i].temp.day) + ' °F</li>'+
+                            '<li class="list-group-item humidFuture1">Humidity: ' + JSON.stringify(weatherData.daily[i].humidity) + '%</li>'+
+                            '</ul>'+
+                            '</div >')
 
-    console.log(`${futureDays.getUTCMonth()+1}/${futureDays.getUTCDate()}/${futureDays.getUTCFullYear()}`)
+        
+    }
 
-        // for small cards
-// $('.date').html(theDate)
-// $('.pic').html("<img src=http://openweathermap.org/img/wn/" + weatherData.weather[0].icon + ".png>")
-// $('.temp').html("Temp: " + JSON.stringify(weatherData.main.temp) + "°F")
-// $('.humid').html("Humidity: " + JSON.stringify(weatherData.main.humidity) + "%")
 }
-
 
 function resetTextarea() {
     $('textarea').val('')
