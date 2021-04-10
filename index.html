@@ -10,18 +10,30 @@
 </head>
 <body>
 
-    <h1>Test</h1>
+    <h1>Weather</h1>
 
     <input type="text" name="city" id="city" placeholder="City">
     <button>Search</button>
     <p class="one"></p>
     
-    <div class="card" style="width: 18rem;">
-        <div class="card-header date"></div>
+    <!-- big card -->
+    <div class="card" style="width: 75%;">
+        <div class="card-header date pic"></div>
         <ul class="list-group list-group-flush">
-            <li class="list-group-item pic"></li>
             <li class="list-group-item temp"></li>
             <li class="list-group-item humid"></li>
+            <li class="list-group-item wind"></li>
+            <li class="list-group-item uv"></li>
+        </ul>
+    </div>
+
+    <!-- small cards -->
+    <div class="card" style="width: 75%;">
+        <div class="card-header dateFuture"></div>
+        <ul class="list-group list-group-flush">
+            <li class="list-group-item picFuture"></li>
+            <li class="list-group-item tempFuture"></li>
+            <li class="list-group-item humidFuture"></li>
         </ul>
     </div>
     
