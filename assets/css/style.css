@@ -14,16 +14,68 @@ h1 {
     color: azure;
 }
 
-.card {
-    box-shadow: 2px 2px black;
-    background-color: #5cac98;
-}
 .card li, .card div {
     margin-bottom: 0px;
     margin-top: 0px;
 }
 
-.card-header, .list-group-item {
+.big-card, .big-card li, .big-card div {
+    background-color: #a4c9c3;
+}
+.big-card .pic {
+    background-color: #86a5a0;
+    margin: 10px;
+    border-radius: 4px;
+    box-shadow: 2px 2px #232424;
+}
+
+.big-card li {
+    background-color: #e6e4d4;
+    margin-bottom: 8px;
+    border-radius: 4px;
+    box-shadow: 2px 2px #282929be;
+}
+
+.small-cards .card-header {
+    background-color: #86a5a0;
+    margin: 10px;
+    border-radius: 4px;
+    box-shadow: 2px 2px #232424;
+}
+
+.small-cards li {
+    background-color: #e6e4d4;
+    margin-bottom: 8px;
+    border-radius: 4px;
+    box-shadow: 2px 2px #282929be;
+}
+
+.input-card {
+    padding: 10PX;
+    background-color: #779993;
+}
+
+.input-card .card-header, .input-card .searchBtn {
+    margin: 0px 5px 0px 5px ;
     border-color: transparent;
-    background-color: #5cac98;
+    background-color: #7cc0c0;
+    box-shadow: 2px 2px #282929be;
+}
+
+.input-card .ulContainer {
+    margin: 5px ;
+    padding: 3px;
+    border-radius: 4px;
+    background-color: #779993;
+}
+
+
+.input-card li {
+    margin: 4px;
+    border-radius: 4px;
+    box-shadow: 2px 2px #282929be;
+}
+
+.hide{
+    display: none;
 }
