@@ -9,42 +9,63 @@
     <title>Weather</title>
 </head>
 <body>
-
+    
     <h1>Weather</h1>
 
-    <input type="text" name="city" id="city" placeholder="City">
-    <button>Search</button>
-    <p class="one"></p>
+    <div class="mainCon container">
     
-   
-        
-    <div class="container">
-        <div class="row">
+        <div class="mainRow row">
 
-            <div class="row">
-                <!-- big card -->
-                <div class="col-12 card">
-                    <div class="card-header date pic"></div>
-                    <ul class="list-group list-group-flush">
-                        <li class="list-group-item temp"></li>
-                        <li class="list-group-item humid"></li>
-                        <li class="list-group-item wind"></li>
-                        <li class="list-group-item uv"></li>
-                    </ul>
+            
+            <div class="col">
+                
+                <!-- <div class="container"> -->
+                    <!-- <div class="row"> -->
+                        <div class="card input-card">
+                            <div class="btnBar">
+                                <div class="card-header"><input type="text" name="city" id="city" placeholder="City"></div>
+                                <div class="list-group-item searchBtn"><button>Search</button></div>
+                            </div>
+                            <div class="ulContainer">
+                                <ul class="list-group list-group-flush">
+                                    <li class="list-group-item">test</li>
+                                    <li class="list-group-item">test</li>
+                                    <li class="list-group-item">test</li>
+                                </ul>
+                            </div>
+                        </div>
+                    <!-- </div> -->
+                <!-- </div> -->
+            </div>
+            
+            
+            <div class="col-8">
+                <div class="container">
+                    
+                    <!-- big card -->
+                    <div class="row">
+                        <div class="card big-card hide">
+                            <div class="card-header date pic"></div>
+                            <ul class="list-group list-group-flush">
+                                <li class="list-group-item temp"></li>
+                                <li class="list-group-item humid"></li>
+                                <li class="list-group-item wind"></li>
+                                <li class="list-group-item uv"></li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <!-- small cards -->
+                    <div class="row gap-3 small-cards">
+                    </div>
+                    
                 </div>
             </div>
             
-            <div class="row gap-3 small-cards">
-                <!-- small cards -->
-            </div>
-                
         </div>
     </div>
         
-        
-
-    
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.js"
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.js"
         integrity="sha512-n/4gHW3atM3QqRcbCn6ewmpxcLAHGaDjpEBu4xZd47N0W2oQ+6q7oc3PXstrJYXcbNU1OHdQ1T7pAP+gi5Yu8g=="
         crossorigin="anonymous"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"
