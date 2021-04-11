@@ -78,6 +78,8 @@ function multiDay(weatherData, userCity) {
     $('.uv').html("UVI : " + JSON.stringify(weatherData.daily[0].uvi))
     
     // for small cards
+
+    $('.small-cards').html('')
     for (let i = 1; i < 6; i++) {
         let dailyData = weatherData.daily[i]
         let whichDay = new Date((dailyData.dt)*1000)
