@@ -2,7 +2,13 @@ let theDate = moment().format("M/DD/YYYY");
 
 
 let userSubmit = $('button').on('click', function(){
+    $('.big-card').removeClass('hide');
     let userCity = $('#city').val().toUpperCase()
+
+    var allCities = [].push(userCity)
+    localStorage.setItem('userCity', allCities)
+    $('.submitBtn').append(allCities[0])
+
     cityApi(userCity)
 })
 
@@ -47,7 +53,6 @@ function weatherApi(userCity, lat, lon) {
 
 
 function printUV(weatherData, userCity) {
-    console.log(weatherData);
     let dailyData = weatherData.daily[0]
     let whichDay = new Date((dailyData.dt)*1000)
     let theDate = `${whichDay.getUTCMonth()+1}/${whichDay.getUTCDate()}/${whichDay.getUTCFullYear()}`
@@ -63,7 +68,8 @@ function printUV(weatherData, userCity) {
         let dailyData = weatherData.daily[i]
         let whichDay = new Date((dailyData.dt)*1000)
         let theDate = `${whichDay.getUTCMonth()+1}/${whichDay.getUTCDate()}/${whichDay.getUTCFullYear()}`
-    $('.small-cards').append('<div class="col-2 card">'+
+        // col-sm-2 col-m-1 col-lg-1 col-xl-5 col-xxl-2
+        $('.small-cards').append('<div class="col-xs-12 col-xl-2 col-xxl-2 card">'+
                             '<div div class= "card-header">'+ theDate +'</div>'+
                             '<ul class="list-group list-group-flush">'+
                             '<li class="list-group-item"><img src=http://openweathermap.org/img/wn/'+ weatherData.daily[i].weather[0].icon+'.png></li>'+
@@ -71,8 +77,6 @@ function printUV(weatherData, userCity) {
                             '<li class="list-group-item humidFuture1">Humidity: ' + JSON.stringify(weatherData.daily[i].humidity) + '%</li>'+
                             '</ul>'+
                             '</div >')
-
-        
     }
 
 }
