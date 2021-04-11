@@ -1,14 +1,24 @@
 let theDate = moment().format("M/DD/YYYY");
+var allCities = []
 
 
+// gets user input
 let userSubmit = $('button').on('click', function(){
     $('.big-card').removeClass('hide');
     let userCity = $('#city').val().toUpperCase()
+    
+    // sends the user input into localStorage
+    allCities.push(userCity)
+    localStorage.setItem('storeCity', JSON.stringify(allCities))
+    var getCity = localStorage.getItem('storeCity')
+    var cityList = JSON.parse(getCity);
 
-    var allCities = [].push(userCity)
-    localStorage.setItem('userCity', allCities)
-    $('.submitBtn').append(allCities[0])
-
+    $('.input-card  ul').html('')
+    for (let i = 0; i < cityList.length; i++) {
+            $('.input-card  ul').append('<li class="list-group-item">' + cityList[i] + '</li>')
+    }
+    
+    resetTextarea()
     cityApi(userCity)
 })
 
@@ -29,6 +39,7 @@ function cityApi(userCity) {
 }
 
 
+// passes the latitude and longitude
 function passLatLon(cityData, userCity) {
     
     let lat = cityData.coord.lat
@@ -37,14 +48,15 @@ function passLatLon(cityData, userCity) {
 } 
 
 
+// gets the daily api info
 function weatherApi(userCity, lat, lon) {
     let siteURL = `https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lon}&units=imperial&appid=ba343b52255d8d308c7b0d444577c71e`
     let weatherData
-    
+
     fetch(siteURL)
     .then(response => response.json())
     .then(data => weatherData = data)
-    .then(() => printUV(weatherData, userCity))
+    .then(() => multiDay(weatherData, userCity))
     .catch((error) => {
         alert('Invalid city');
         resetTextarea()
@@ -52,11 +64,13 @@ function weatherApi(userCity, lat, lon) {
 }
 
 
-function printUV(weatherData, userCity) {
+// adds the api info into the html elements
+function multiDay(weatherData, userCity) {
     let dailyData = weatherData.daily[0]
     let whichDay = new Date((dailyData.dt)*1000)
     let theDate = `${whichDay.getUTCMonth()+1}/${whichDay.getUTCDate()}/${whichDay.getUTCFullYear()}`
     
+    // for large card
     $('.date').html(userCity + ": (" + theDate + ")" + "<img src=http://openweathermap.org/img/wn/" + weatherData.current.weather[0].icon + ".png>")
     $('.temp').html("Temperature: " + JSON.stringify(weatherData.daily[0].temp.day) + " °F")
     $('.humid').html("Humidity: " + JSON.stringify(weatherData.daily[0].humidity) + "%")
@@ -68,8 +82,7 @@ function printUV(weatherData, userCity) {
         let dailyData = weatherData.daily[i]
         let whichDay = new Date((dailyData.dt)*1000)
         let theDate = `${whichDay.getUTCMonth()+1}/${whichDay.getUTCDate()}/${whichDay.getUTCFullYear()}`
-        // col-sm-2 col-m-1 col-lg-1 col-xl-5 col-xxl-2
-        $('.small-cards').append('<div class="col-xs-12 col-xl-2 col-xxl-2 card">'+
+        $('.small-cards').append('<div class="col-xs-12 col-xl-2 col-xxl-2 card small-card-container">'+
                             '<div div class= "card-header">'+ theDate +'</div>'+
                             '<ul class="list-group list-group-flush">'+
                             '<li class="list-group-item"><img src=http://openweathermap.org/img/wn/'+ weatherData.daily[i].weather[0].icon+'.png></li>'+
@@ -78,9 +91,10 @@ function printUV(weatherData, userCity) {
                             '</ul>'+
                             '</div >')
     }
-
 }
 
+
+// resets the input text
 function resetTextarea() {
-    $('textarea').val('')
+    $('input').val('')
 }

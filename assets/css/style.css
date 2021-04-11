@@ -2,6 +2,7 @@
     margin-bottom: 10px;
 }
 
+/* styles the body_____________________________*/
 body {
     display: flex;
     flex-direction: column;
@@ -10,18 +11,32 @@ body {
     background-color: rgb(53, 53, 53);
 }
 
-h1 {
-    color: azure;
+
+/* styles the title____________________________*/
+.title-container {
+    background-color: #4b5e5a;
+    width: 100%;
+    text-align: center;
 }
 
+h1 {
+    color: rgb(212, 92, 12);
+    margin: 10px;
+}
+
+
+/* gives margins to the cards____________________*/
 .card li, .card div {
     margin-bottom: 0px;
     margin-top: 0px;
 }
 
+
+/* styles the forcast cards______________________*/
 .big-card, .big-card li, .big-card div {
-    background-color: #a4c9c3;
+    background-color: #ca8862;
 }
+
 .big-card .pic {
     background-color: #86a5a0;
     margin: 10px;
@@ -34,6 +49,10 @@ h1 {
     margin-bottom: 8px;
     border-radius: 4px;
     box-shadow: 2px 2px #282929be;
+}
+
+.small-card-container{
+    background-color: #d6bfa1;
 }
 
 .small-cards .card-header {
@@ -50,6 +69,8 @@ h1 {
     box-shadow: 2px 2px #282929be;
 }
 
+
+/* styles the input and history___________________*/
 .input-card {
     padding: 10PX;
     background-color: #779993;
@@ -69,13 +90,14 @@ h1 {
     background-color: #779993;
 }
 
-
 .input-card li {
     margin: 4px;
     border-radius: 4px;
     box-shadow: 2px 2px #282929be;
 }
 
+
+/* makes elements hide________________________________*/
 .hide{
     display: none;
 }

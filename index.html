@@ -10,39 +10,34 @@
 </head>
 <body>
     
-    <h1>Weather</h1>
+    <!-- contains the title -->
+    <div class="title-container">
+        <h1>Weather</h1>
+    </div>
 
+    <!-- the main containers -->
     <div class="mainCon container">
-    
         <div class="mainRow row">
 
-            
+            <!-- the input and history card -->
             <div class="col">
-                
-                <!-- <div class="container"> -->
-                    <!-- <div class="row"> -->
-                        <div class="card input-card">
-                            <div class="btnBar">
-                                <div class="card-header"><input type="text" name="city" id="city" placeholder="City"></div>
-                                <div class="list-group-item searchBtn"><button>Search</button></div>
-                            </div>
-                            <div class="ulContainer">
-                                <ul class="list-group list-group-flush">
-                                    <li class="list-group-item">test</li>
-                                    <li class="list-group-item">test</li>
-                                    <li class="list-group-item">test</li>
-                                </ul>
-                            </div>
-                        </div>
-                    <!-- </div> -->
-                <!-- </div> -->
+                <div class="card input-card">
+                    <div class="btnBar">
+                        <div class="card-header"><input type="text" name="city" id="city" placeholder="City"></div>
+                        <div class="list-group-item searchBtn"><button>Search</button></div>
+                    </div>
+                    <div class="ulContainer">
+                        <ul class="list-group list-group-flush">
+                        </ul>
+                    </div>
+                </div>
             </div>
             
-            
+            <!-- big card -->
             <div class="col-8">
                 <div class="container">
                     
-                    <!-- big card -->
+                    <!-- the current day -->
                     <div class="row">
                         <div class="card big-card hide">
                             <div class="card-header date pic"></div>
@@ -56,6 +51,7 @@
                     </div>
                     
                     <!-- small cards -->
+                    <!-- 5 day -->
                     <div class="row gap-3 small-cards">
                     </div>
                     
