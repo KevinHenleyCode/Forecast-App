@@ -55,7 +55,7 @@
 <br>
 
 ## Screenshot
-![screenshot](Assets/images/Screenshot.png)
+![screenshot](assets/images/Screenshot.png)
 
 <br>
 <br>
