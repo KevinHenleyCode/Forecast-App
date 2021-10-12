@@ -30,6 +30,13 @@
 <br>
 <br>
 
+## **Future**
+* Update styling.
+* Be able to login and have your settings stored.
+* Light and Dark mode with the ability to have it change with the time of day.
+<br>
+<br>
+
 ## **License**
 ### *MIT* <br>
         A short and simple permissive license with conditions only requiring preservation of copyright and license notices. Licensed works, modifications, and larger works may be distributed under different terms and without source code.
